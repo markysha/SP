@@ -5,4 +5,4 @@ for(int i = 1; i < n; i++)
 		for(int j = Z[i] - 1; j >= 0 && !(P[i + j]); j--)
 			P[i + j] = j + 1;
 
-taken from http://codeforces.com/blog/entry/9612
+///taken from http://codeforces.com/blog/entry/9612
