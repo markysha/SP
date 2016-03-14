@@ -28,8 +28,8 @@ struct fenwicktree_2{
   }
 
   void inc (int r1, int r2, int delta) {
-    for (int i = r1; i < n; i = (i | (i + 1)))
-    	for (int j = r2; j < m; j = (j | (j + 1)))
+  	for (int i = r1; i < n; i = (i | (i + 1)))
+  		for (int j = r2; j < m; j = (j | (j + 1)))
 				t[i][j] += delta;
   }
 
