@@ -2,7 +2,7 @@ struct fenwicktree_1{
   vector < int > t;
   int n;
 
-  fenwicktree(int x){
+  fenwicktree_1(int x){
     n = x;
     t.resize(n, 0);
   }
