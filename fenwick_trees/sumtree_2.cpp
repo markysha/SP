@@ -17,20 +17,20 @@ struct fenwicktree_2{
     t.resize(n);
     for (int i = 0; i < n; i++)
       t[i].resize(m, 0);
-	}
+  }
 
   int sum(int r1, int r2) {
-    int ans = 0;
-    for (int i = r1; i >= 0; i = (i & (i + 1)) - 1)
-    	for (int j = r2; j >= 0; j = (j & (j + 1)) - 1)
-      	ans += t[i][j];
-    return ans;
+  	int ans = 0;
+  	for (int i = r1; i >= 0; i = (i & (i + 1)) - 1)
+  		for (int j = r2; j >= 0; j = (j & (j + 1)) - 1)
+  			ans += t[i][j];
+  	return ans;
   }
 
   void inc (int r1, int r2, int delta) {
   	for (int i = r1; i < n; i = (i | (i + 1)))
   		for (int j = r2; j < m; j = (j | (j + 1)))
-				t[i][j] += delta;
+  			t[i][j] += delta;
   }
 
   int sum(int l1, int r1, int l2, int r2)
