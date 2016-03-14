@@ -2,10 +2,10 @@ struct fenwicktree_1{
   vector < int > t;
   int n;
 
-	fenwicktree(int x){
-		n = x;
-		t.resize(n, 0);
-	}
+  fenwicktree(int x){
+    n = x;
+    t.resize(n, 0);
+  }
 
   int sum (int r) {
     int ans = 0;
@@ -19,8 +19,7 @@ struct fenwicktree_1{
       t[i] += delta;
   }
 
-  int sum (int l, int r)
-  {
+  int sum (int l, int r){
     return sum (r) - sum (l - 1);
   }
 }
