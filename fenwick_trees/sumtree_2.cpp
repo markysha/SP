@@ -3,20 +3,20 @@ struct fenwicktree_2{
   int n;
   int m;
 
-	fenwicktree(int x, int y){
-		n = x;
-		m = y;
-		t.resize(n);
-		for (int i = 0; i < n; i++)
-			t[i].resize(m, 0);
-	}
+  fenwicktree(int x, int y){
+    n = x;
+    m = y;
+    t.resize(n);
+    for (int i = 0; i < n; i++)
+    	t[i].resize(m, 0);
+  }
 
-	fenwicktree(int x){
-		n = x;
-		m = x;
-		t.resize(n);
-		for (int i = 0; i < n; i++)
-			t[i].resize(m, 0);
+  fenwicktree(int x){
+    n = x;
+    m = x;
+    t.resize(n);
+    for (int i = 0; i < n; i++)
+      t[i].resize(m, 0);
 	}
 
   int sum(int r1, int r2) {
