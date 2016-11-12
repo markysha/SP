@@ -3,7 +3,7 @@ struct fenwicktree_2{
   int n;
   int m;
 
-  fenwicktree(int x, int y){
+  fenwicktree_2(int x, int y){
     n = x;
     m = y;
     t.resize(n);
@@ -11,7 +11,7 @@ struct fenwicktree_2{
     	t[i].resize(m, 0);
   }
 
-  fenwicktree(int x){
+  fenwicktree_2(int x){
     n = x;
     m = x;
     t.resize(n);
