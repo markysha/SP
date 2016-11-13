@@ -33,8 +33,7 @@ struct fenwicktree_2{
   			t[i][j] += delta;
   }
 
-  int sum(int l1, int r1, int l2, int r2)
-  {
+  int sum(int l1, int r1, int l2, int r2) {
     return sum(l2, r2) - sum (l2, r1 - 1) - sum(l1 - 1, r2) + sum(l1 - 1, r1 - 1);
   }
 };
