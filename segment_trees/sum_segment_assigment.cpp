@@ -1,5 +1,5 @@
 template<class T>
-struct segtree{
+struct segtree{ //[l;r)
     int n;
     vector<T> t;
     vector<T> lazy;
