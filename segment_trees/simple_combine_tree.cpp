@@ -1,10 +1,8 @@
 template<class T>
-struct segtree{
+struct segtree{ //[l;r)
     int n;
     vector<T> t;
-
     segtree(int sz):n(1 << ((int)(log2(sz - 1)) + 1)), t(n + n,0){}
-
     T combine(T a, T b){
         return a + b;
     }
@@ -14,12 +12,10 @@ struct segtree{
             return;
         }
         int mid = (l + r) >> 1;
-        if (p < mid){
+        if (p < mid)
             modify(p, val, root<<1, l, mid);
-        }
-        else{
+        else
             modify(p, val, root<<1|1, mid, r);
-        }
         t[root] = combine(t[root<<1], t[root<<1|1]);
     }
     void modify(int p, T val){
