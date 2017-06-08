@@ -27,7 +27,7 @@ struct segtree { //[l;r)
         modify(x, y, val, root<<1|1, mid, r);
         t[root] = t[root<<1] + t[root<<1|1];
     }
-    void modify(int x, int y, int val) { 
+    void modify(int x, int y, T val) { 
         modify(x, y, val, 1, 0, n);
     }
     T query(int x, int y, int root, int l, int r) {
