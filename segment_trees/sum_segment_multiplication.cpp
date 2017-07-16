@@ -5,11 +5,7 @@ struct segtree {
   int n;
   vector<T> t;
   vector<T> lazy;
-  segtree(int sz) {
-    n = 1 << ((int)(log2(sz - 1)) + 1);
-    t.resize(n + n, 1);
-    lazy.resize(n + n, 1);
-  }
+  segtree(int sz):n(1 << ((int)(log2(sz - 1)) + 1)), t(n + n, 1), lazy(n + n, 1){}
   segtree(){}
   void push(int v) {
     if (v < n) {
