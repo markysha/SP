@@ -50,16 +50,12 @@ struct segtree { //[l;r)
     }
     int mid = (l + r) >> 1;
     if (p < mid) {
-//      if (make_new){
       int cur = add_node(all[v].l);
       all[v].l = cur;
-//      }
       modify(p, val, all[v].l, l, mid);
     } else {
-//      if (make_new){
       int cur = add_node(all[v].r);
       all[v].r = cur;
-//      }
       modify(p, val, all[v].r, mid, r);
     }
     all[v].sum = combine(all[all[v].l], all[all[v].r]);
