@@ -1,7 +1,6 @@
-
 struct segtree { //[l;r)
   struct node {
-    int l, r, sum;
+    int l, r, sum = 0;
     node():l(0), r(0), sum(0) {}
   };
   int n;
@@ -45,7 +44,7 @@ struct segtree { //[l;r)
   }
   void modify(int p, int val, int v, int l, int r) {
     if (r - l < 2) {
-      all[v].sum = val;
+      all[v].sum += val;
       return;
     }
     int mid = (l + r) >> 1;
@@ -66,16 +65,37 @@ struct segtree { //[l;r)
       cur = copy_root(state);
     modify(p, val, cur, 0, n);
   }
-  int query(int cl, int cr, int v, int l, int r) {
+  int query(int l, int r, int v, int cl, int cr) {
     if (l >= cr || r <= cl) return 0;
-    if (l >= cl && r <= cr) {
+    if (l <= cl && r >= cr) {
       return all[v].sum;
     }
-    int mid = (l + r) >> 1;
-    return query(cl, cr, all[v].r, mid, r)
-          +query(cl, cr, all[v].l, l, mid);
+    int mid = (cl + cr) >> 1;
+    return query(l, r, all[v].r, mid, cr)
+          +query(l, r, all[v].l, cl, mid);
   }
   int query(int state, int l, int r) {
     return query(l, r, root[state], 0, n);
+  }
+  int kth_element(int v1, int v2, int k, int kek = -1){
+    int l = 0, r = n;
+    while (r - l > 1){
+      int mid = (l + r) >> 1;
+      if (all[all[v2].l].sum - all[all[v1].l].sum >= k){
+        v1 = all[v1].l;
+        v2 = all[v2].l;
+        r = mid;
+      }
+      else{
+        k -= all[all[v2].l].sum - all[all[v1].l].sum;
+        v1 = all[v1].r;
+        v2 = all[v2].r;
+        l = mid;
+      }
+    }
+    return l;
+  }
+  int kth_element(int l, int r, int k){
+    return kth(root[l], root[r], k);
   }
 };
