@@ -1,25 +1,18 @@
-struct fenwicktree_1{
-  vector < int > t;
+struct Fenwick{ ///[l, r)
+  vector<int> t;
   int n;
-
-  fenwicktree_1(int x){
-    n = x;
-    t.resize(n, 0);
-  }
-
-  int sum (int r) {
+  Fenwick(int x):n(x), t(n, 0) {}
+  int query(int r) {
     int ans = 0;
     for (; r >= 0; r = (r & (r + 1)) - 1)
       ans += t[r];
     return ans;
   }
-
-  void inc (int i, int delta) {
+  void modify(int i, int delta) {
     for (; i < n; i = (i | (i + 1)))
       t[i] += delta;
   }
-
-  int sum (int l, int r){
-    return sum (r) - sum (l - 1);
+  int query(int l, int r) {
+    return query(r - 1) - query(l - 1);
   }
 };
